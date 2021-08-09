@@ -13,26 +13,25 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .get('https://jsonplaceholder.typicode.com/posts')
+      .get('https://origin-top-spots-api.herokuapp.com/api/topspots')
       .then((response) => response.data)
       .then((topspots) => this.setState({ topspots }));
   }
 
   render() {
-    const { topspots } = this.state;
     return (
       <div className='App'>
         <div className='container'>
           <h1>San Diego Top Spots</h1>
           <h3>A list of the top 30 places to see in San Diego, California.</h3>
-          { topspots.map(({ id, title, body }) => (
+          { this.state.topspots.map((topspot) => (
             <TopSpot
-              key={ id }
-              name={ title }
-              description={ body }
-              location={ id }
+              key={ topspot.id }
+              name={ topspot.name }
+              description={ topspot.description }
+              location={ topspot.location }
             />
-          )) }
+          ))}
         </div>
       </div>
     );
