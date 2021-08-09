@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import TopSpot from '../components/topspot';
 
 class App extends Component {
   constructor(props) {
@@ -12,17 +13,27 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .get('https://codepen.io/merobertsjr/pen/WayqqB.js')
+      .get('https://jsonplaceholder.typicode.com/posts')
       .then((response) => response.data)
       .then((topspots) => this.setState({ topspots }));
   }
 
   render() {
+    const { topspots } = this.state;
     return (
       <div className='App'>
-        <h1>San Diego Top Spots</h1>
-        <h3>A list of the top 30 places to see in San Diego, California.</h3>
-        <pre>{ JSON.stringify(this.state.topspots, null, 2) }</pre>
+        <div className='container'>
+          <h1>San Diego Top Spots</h1>
+          <h3>A list of the top 30 places to see in San Diego, California.</h3>
+          { topspots.map(({ id, title, body }) => (
+            <TopSpot
+              key={ id }
+              name={ title }
+              description={ body }
+              location={ id }
+            />
+          )) }
+        </div>
       </div>
     );
   }
