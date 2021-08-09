@@ -2,7 +2,7 @@
   "name": "san-diego-top-spots-react",
   "version": "0.1.0",
   "description": "Base application setup for creating a new react project.",
-  "main": "server/index.js",
+  "main": "index.js",
   "scripts": {
     "start": "parcel public/index.html --open",
     "build": "npx parcel build public/index.html --no-source-maps",
