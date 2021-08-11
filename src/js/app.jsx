@@ -1,7 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import axios from 'axios';
-import TopSpot from '../components/Topspot';
+import TopSpot from './Topspot';
 
 class App extends Component {
   constructor(props) {
